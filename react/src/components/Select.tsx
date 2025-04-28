@@ -1,4 +1,15 @@
-const Select = (props) => {
+import { OptionProps } from "../utils/types";
+
+interface SelectProps<T extends OptionProps> {
+  name?: string,
+  labelKey?: keyof T,
+  valueKey?: keyof T,
+  options: T[],
+  selected: T | null,
+  onChange: (option: T | null, event: React.ChangeEvent<HTMLSelectElement>) => void;
+}
+
+const Select = <T extends OptionProps>(props: SelectProps<T>): JSX.Element => {
   const {
     name = '',
     labelKey = 'name',
@@ -8,10 +19,10 @@ const Select = (props) => {
     onChange,
   } = props;
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     const option = options.find((item) => item[valueKey] === value) ?? null;
-    onChange(option, event);
+      onChange(option, event);
   };
 
   return (

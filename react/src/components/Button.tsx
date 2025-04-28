@@ -1,9 +1,11 @@
 import { useTheme } from '../hooks';
+import { ButtonProps } from '../utils/types';
 
-const Button = (props) => {
+
+const Button = (props: ButtonProps): JSX.Element => {
   const {
     children,
-    variant = 'primary', // secondary, warn, error
+    variant = 'primary',
     disabled = false,
     outlined = false,
     onClick,

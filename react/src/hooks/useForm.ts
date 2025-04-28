@@ -1,11 +1,19 @@
 import { useRef, useState } from 'react';
 
-export const useForm = (form) => {
-  const [, forceUpdate] = useState();
+interface FormProps {
+  [key: string]: string
+}
+
+interface SetValueForm {
+  (key: string, value: string): void;
+}
+
+export const useForm = (form: FormProps): [FormProps, SetValueForm] => {
+  const [, forceUpdate] = useState<NonNullable<unknown>>();
 
   const stateRef = useRef(form);
 
-  const setValue = (key, value) => {
+  const setValue: SetValueForm = (key, value) => {
     stateRef.current[key] = value;
     forceUpdate({});
   };

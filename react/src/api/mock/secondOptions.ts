@@ -1,4 +1,6 @@
-export const MOCK_SECOND_OPTIONS = {
+import { OptionProps } from "../../utils/types";
+
+export const MOCK_SECOND_OPTIONS: Record<number, OptionProps[]> = {
   1: [
     { id: 1, label: 'A-A', value: 'aa' },
     { id: 2, label: 'A-B', value: 'ab' },
