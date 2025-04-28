@@ -4,21 +4,17 @@ declare global {
   }
 }
 
-export interface OptionProps {
+export interface FirsOptionProps {
   id: number,
-  [key: string] : string | number
+  name?: string,
+  value?: string,
 }
 
-export interface ButtonProps {
-  children: React.ReactNode,
-  variant?: VariantBtn,
-  disabled?: boolean,
-  outlined?: boolean,
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void,
-  type?: 'button' | 'submit'
+export interface SecondOptionProps {
+  id: number,
+  label?: string,
+  value?: string,
 }
-
-type VariantBtn = 'primary'| 'secondary' | 'warn' | 'error';
 
 export interface AppSettings {
   theme: Theme,
@@ -29,4 +25,4 @@ export interface AppSettings {
 
 export type Theme = 'dark' | 'light';
 
-export type ThemeContextType = [theme: string, setTheme: (theme: Theme) => void];
+export type ThemeContextType = [theme: Theme, setTheme: (theme: Theme) => void];

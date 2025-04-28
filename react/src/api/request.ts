@@ -1,10 +1,10 @@
 import { delay } from '../utils';
-import { OptionProps } from '../utils/types';
+import { FirsOptionProps, SecondOptionProps } from '../utils/types';
 import { MOCK_FIST_OPTIONS, MOCK_SECOND_OPTIONS } from './mock';
 
 type OverloadedFn = {
-  (path: '/first', data?: never): Promise<OptionProps[]>;
-  (path: '/second', data: OptionProps): Promise<OptionProps[]>;
+  (path: '/first', data?: never): Promise<FirsOptionProps[]>;
+  (path: '/second', data: SecondOptionProps): Promise<SecondOptionProps[]>;
 };
 
 export const request: OverloadedFn = async (path, data?) => {

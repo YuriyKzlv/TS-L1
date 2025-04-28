@@ -1,15 +1,18 @@
-import { OptionProps } from "../utils/types";
+import { FirsOptionProps, SecondOptionProps } from "../utils/types";
 
-interface SelectProps<T> {
+
+type OptionProps = FirsOptionProps | SecondOptionProps;
+
+interface SelectProps<T extends OptionProps> {
   name?: string,
   labelKey?: keyof T,
   valueKey?: keyof T,
   options: T[],
   selected: T | null,
-  onChange: (option: T | null, event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChange: (option: T, event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const Select = (props: SelectProps<OptionProps>): JSX.Element => {
+const Select = <T extends OptionProps>(props: SelectProps<T>): JSX.Element => {
   const {
     name = '',
     labelKey = 'name',
@@ -22,7 +25,9 @@ const Select = (props: SelectProps<OptionProps>): JSX.Element => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     const option = options.find((item) => item[valueKey] === value) ?? null;
-    onChange(option, event);
+    if (option){
+      onChange(option, event);
+    }
   };
 
   return (
@@ -33,10 +38,10 @@ const Select = (props: SelectProps<OptionProps>): JSX.Element => {
       {options.map((item) => (
         <option
           key={item.id}
-          value={item[valueKey]}
+          value={item[valueKey] as string}
           defaultValue={selected?.value}
         >
-          {item[labelKey]}
+          {item[labelKey as keyof T] as string}
         </option>
       ))}
     </select>

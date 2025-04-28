@@ -3,7 +3,7 @@ import HomePage from './pages/HomePage';
 import { loadSettings } from './utils';
 
 export const App = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     loadSettings();

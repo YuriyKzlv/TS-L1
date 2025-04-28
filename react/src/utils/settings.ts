@@ -1,6 +1,6 @@
 import { Theme } from './types' 
 
-export const loadSettings = (): void => {
+export const loadSettings = () => {
   try {
     const rawSettings = localStorage.getItem('app-settings');
     if (rawSettings == null) throw new Error();

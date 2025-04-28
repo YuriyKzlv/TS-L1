@@ -1,6 +1,6 @@
-import { OptionProps } from '../utils/types';
+import { FirsOptionProps, SecondOptionProps } from '../utils/types';
 import { request } from './request';
 
-export const getFirstOptions = async (): Promise<OptionProps[]> => request('/first');
+export const getFirstOptions = async (): Promise<FirsOptionProps[]> => request('/first');
 
-export const getSecondOptions = async (payload: OptionProps): Promise<OptionProps[]> => request('/second', payload);
+export const getSecondOptions = async (payload: SecondOptionProps): Promise<SecondOptionProps[]> => request('/second', payload);

@@ -6,18 +6,18 @@ import ShowError from '../components/ShowError';
 import { ThemeProvider } from '../context/theme';
 import { useForm } from '../hooks';
 import { saveSettings } from '../utils';
-import { OptionProps, Theme } from '../utils/types';
+import { FirsOptionProps, SecondOptionProps, Theme } from '../utils/types';
 
 const HomePage = () => {
   const [theme, setTheme] = useState<Theme>(window.appSettings.theme);
 
-  const [firstOptions, setFirstOptions] = useState<OptionProps[]>([]);
-  const [selectedFirstOption, setSelectedFirstOption] = useState<OptionProps | null>(null);
+  const [firstOptions, setFirstOptions] = useState<FirsOptionProps[]>([]);
+  const [selectedFirstOption, setSelectedFirstOption] = useState<FirsOptionProps | null>(null);
 
   const [error, setError] = useState('');
 
-  const [secondOptions, setSecondOptions] = useState<OptionProps[]>([]);
-  const [selectedSecondOption, setSelectedSecondOption] = useState<OptionProps | null>(null);
+  const [secondOptions, setSecondOptions] = useState<SecondOptionProps[]>([]);
+  const [selectedSecondOption, setSelectedSecondOption] = useState<SecondOptionProps | null>(null);
 
   const [nameForm, setName] = useForm({ firstName: '', lastName: '' });
 
@@ -34,7 +34,7 @@ const HomePage = () => {
     getOptions();
   }, []);
 
-  const onChangeFirstOption = async (value: OptionProps | null) => {
+  const onChangeFirstOption = async (value: FirsOptionProps | null) => {
     setSelectedFirstOption(value);
     if (value == null) {
       setSelectedSecondOption(null);
@@ -44,7 +44,7 @@ const HomePage = () => {
     }
   };
 
-  const onChangeSecondOption = (value: OptionProps | null) => {
+  const onChangeSecondOption = (value: SecondOptionProps) => {
     setSelectedSecondOption(value);
   };
 

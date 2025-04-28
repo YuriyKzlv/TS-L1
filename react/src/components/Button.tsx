@@ -1,8 +1,17 @@
 import { useTheme } from '../hooks';
-import { ButtonProps } from '../utils/types';
 
+type VariantBtn = 'primary'| 'secondary' | 'warn' | 'error';
 
-const Button = (props: ButtonProps): JSX.Element => {
+interface ButtonProps {
+  children: React.ReactNode,
+  variant?: VariantBtn,
+  disabled?: boolean,
+  outlined?: boolean,
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void,
+  type?: 'button' | 'submit'
+}
+
+const Button = (props: ButtonProps) => {
   const {
     children,
     variant = 'primary',
