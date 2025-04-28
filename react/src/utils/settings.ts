@@ -1,3 +1,5 @@
+import { Theme } from './types' 
+
 export const loadSettings = () => {
   try {
     const rawSettings = localStorage.getItem('app-settings');
@@ -13,7 +15,7 @@ export const loadSettings = () => {
   }
 };
 
-export const saveSettings = (key, settings) => {
+export const saveSettings = (key: string, settings: Theme) => {
   window.appSettings[key] = settings;
   localStorage.setItem('app-settings', JSON.stringify(window.appSettings));
 };

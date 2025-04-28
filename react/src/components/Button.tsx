@@ -1,9 +1,20 @@
 import { useTheme } from '../hooks';
 
-const Button = (props) => {
+type VariantBtn = 'primary'| 'secondary' | 'warn' | 'error';
+
+interface ButtonProps {
+  children: React.ReactNode,
+  variant?: VariantBtn,
+  disabled?: boolean,
+  outlined?: boolean,
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void,
+  type?: 'button' | 'submit'
+}
+
+const Button = (props: ButtonProps) => {
   const {
     children,
-    variant = 'primary', // secondary, warn, error
+    variant = 'primary',
     disabled = false,
     outlined = false,
     onClick,
